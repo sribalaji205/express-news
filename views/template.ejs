@@ -1,0 +1,62 @@
+<html>
+
+<head>
+    <title>NEWS APP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="top">
+        <div class="head">
+            News App
+        </div>
+        <div class="nav">
+            <label class="hammenu" for="check">
+                <div></div>
+                <div></div>
+                <div></div>
+            </label>
+            <input type="checkbox" class="check" id="check">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/topstories">Top Stories</a></li>
+                <li><a href="/newstories">New Stories</a></li>
+                <li><a href="/beststories">Best Stories</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <% if(stories.length == 1){ %>
+
+        <div class="content">
+            <p>ExpressJs News App</p>
+            <p>Top Stories, New Stories, Best Stories</p>
+        </div>
+        <% }  %>
+            <div class="container">
+
+                <%  if(stories.length>1 && images.length>1 && (stories.length==images.length)){ %>
+
+                    <% for(var i=0;i<stories.length;i++ ) { %>
+                        <div class="cards">
+                            <a href="<%- stories[i].url %>" class="link">
+                                <% var image %>
+                                    <% if(images[i]!="" && (images[i].substring(0,4))=="http"){image=images[i]}else{image = "/images/placeholder.png" } %>
+                                        <div class="imageholder">
+                                            <img src="<%- image %>" onerror="this.onerror=null;this.src='/images/placeholder.png';" alt="image">
+                                        </div>
+                                        <p>
+                                            <%- stories[i].title %>
+                                        </p>
+                            </a>
+                        </div>
+
+                        <% } %>
+
+                            <% } %>
+            </div>
+</body>
+
+</html>
